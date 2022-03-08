@@ -38,6 +38,7 @@ export class AppComponent implements OnInit {
       console.log(profile);
       console.log('---->');
       console.log(liff.getDecodedIDToken());
+      console.log(liff.getVersion());
       this.profile = profile;
       this.displayName = profile.displayName;
       this.pictureUrl = profile.pictureUrl;
