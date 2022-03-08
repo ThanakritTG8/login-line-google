@@ -10,9 +10,10 @@ export class AppComponent implements OnInit {
   title = 'angular-line-login';
   idToken: string = '';
   displayName: string = '';
-  pictureUrl: string = '';
-  statusMessage: string = '';
+  pictureUrl: any;
+  statusMessage: any;
   userId: string = '';
+  profile = {};
 
   ngOnInit(): void {
     this.initLine();
@@ -34,9 +35,10 @@ export class AppComponent implements OnInit {
     console.log(idToken);
     liff.getProfile().then(profile => {
       console.log(profile);
+      this.profile = profile;
       this.displayName = profile.displayName;
-      this.pictureUrl == profile.pictureUrl;
-      this.statusMessage == profile.statusMessage;
+      this.pictureUrl = profile.pictureUrl;
+      this.statusMessage = profile.statusMessage;
       this.userId = profile.userId;
     }).catch(err => console.error(err));
   }
