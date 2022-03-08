@@ -35,8 +35,8 @@ export class AppComponent implements OnInit {
     liff.getProfile().then(profile => {
       console.log(profile);
       this.displayName = profile.displayName;
-      // this.pictureUrl = profile.pictureUrl;
-      // this.statusMessage = profile.statusMessage;
+      this.pictureUrl == profile.pictureUrl;
+      this.statusMessage == profile.statusMessage;
       this.userId = profile.userId;
     }).catch(err => console.error(err));
   }
