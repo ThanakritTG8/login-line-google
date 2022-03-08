@@ -8,18 +8,18 @@ import liff from '@line/liff';
 })
 export class AppComponent implements OnInit {
   title = 'angular-line-login';
-  idToken = '';
-  displayName = '';
-  pictureUrl = '';
-  statusMessage = '';
-  userId = '';
+  idToken: string = '';
+  displayName: string = '';
+  pictureUrl: string = '';
+  statusMessage: string = '';
+  userId: string = '';
 
   ngOnInit(): void {
     this.initLine();
   }
 
   initLine(): void {
-    liff.init({ liffId: '1655250022-AVJylL18' }, () => {
+    liff.init({ liffId: '1656952075-4nEpqz6O' }, () => {
       if (liff.isLoggedIn()) {
         this.runApp();
       } else {
@@ -30,12 +30,13 @@ export class AppComponent implements OnInit {
 
   runApp(): void {
     const idToken = liff.getIDToken();
-    this.idToken == idToken;
+    // this.idToken = idToken;
+    console.log(idToken);
     liff.getProfile().then(profile => {
       console.log(profile);
       this.displayName = profile.displayName;
-      this.pictureUrl == profile.pictureUrl;
-      this.statusMessage == profile.statusMessage;
+      // this.pictureUrl = profile.pictureUrl;
+      // this.statusMessage = profile.statusMessage;
       this.userId = profile.userId;
     }).catch(err => console.error(err));
   }
