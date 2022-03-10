@@ -1,0 +1,54 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <form class="d-flex">
+
+      <button *ngIf="user != null" class="btn" nz-button nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomCenter">
+        <img [src]="pictureUrl" alt="profile" class="rounded-circle" style="width: 30px;">
+      </button>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>{{ displayName }}</li>
+          <li nz-menu-item (click)="signOut()">log out</li>
+        </ul>
+      </nz-dropdown-menu>
+
+      <button *ngIf="user == null" class="btn text-primary" (click)="showModal()">
+        Login
+      </button>
+    </form>
+  </div>
+</nav>
+
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="login" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <div class="container" *nzModalContent>
+    <div class="row d-flex justify-content-center">
+      <div class="col-12">
+        <h4 class="text-center mb-3">Login</h4>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="example@email.com">
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control">
+        </div>
+        <button class="btn btn-primary" style="width: 100%;">
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container" *nzModalFooter>
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-danger pt-1 pb-2 mb-3" (click)="signIn('google')" style="width: 100%;">
+          <i nz-icon nzType="google" nzTheme="outline" style=""></i>
+        </button>
+        <button class="btn btn-success" style="width: 100%;">
+          Line
+        </button>
+      </div>
+    </div>
+  </div>
+</nz-modal>

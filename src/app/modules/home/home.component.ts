@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  radioValue: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  changeLanguage(lang: string) {
+    // this.translate.use(lang);
+    console.log(lang);
+  }
 }

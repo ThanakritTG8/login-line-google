@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   profile = {};
 
   ngOnInit(): void {
-    this.initLine();
+    // this.initLine();
   }
 
   initLine(): void {
