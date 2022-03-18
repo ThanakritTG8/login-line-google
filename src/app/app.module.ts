@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
 // liblary
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -9,9 +10,12 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+} from 'angularx-social-login';
 
 // component
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { HomeComponent } from './modules/home/home.component';
@@ -44,8 +48,29 @@ registerLocaleData(en);
     NzRadioModule,
     NzModalModule,
     NzDropDownModule,
+    SocialLoginModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    {
+      provide: NZ_I18N,
+      useValue: en_US
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        provider: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '228336534795-vsjr963ul1ltm83sic4tt2umsidalgfg.apps.googleusercontent.com'
+            )
+
+          }
+        ]
+      } ,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
